@@ -6,7 +6,11 @@ const groq=new Groq({apiKey:process.env.API_KEY})
 import express from "express"
 const app=express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+}));
+
 const prompt=`You are a seasoned consulting case interviewer from a top-tier strategy firm. Simulate real case interviews based on actual business scenarios.
 
 Your goal is to:
